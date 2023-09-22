@@ -11,8 +11,8 @@ const refs = {
 
 function createMarkupSelect(array) {
   return array
-    .map(element => {
-      return `<option value = "${element.id}">${element.name}</option>`;
+    .map(({id, name}) => {
+      return `<option value = "${id}">${name}</option>`;
     })
     .join('');
 }
@@ -36,8 +36,8 @@ fetchBreeds()
 
 refs.select.addEventListener('change', handlerSelect);
 
-function handlerSelect(e) {
-  const catBreed = e.target.value;
+function handlerSelect(event) {
+  const catBreed = event.target.value;
   refs.loader.style.display = 'block';
   refs.catInfo.style.display = 'none';
 
